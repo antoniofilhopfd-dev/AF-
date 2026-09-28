@@ -1,0 +1,14 @@
+{
+  "id": "integracoes",
+  "nome": "Integrações",
+  "versao_base": "12.0.0",
+  "status": "estavel",
+  "arquivo_dados": "AF_PLUS_INTEGRACOES.xlsx",
+  "dados_persistentes": true,
+  "scripts_runtime": ["APPS/INTEGRACOES/integrations_controller_v12000.js"],
+  "implementacao_compartilhada_core": false,
+  "regra_atualizacao": "Nunca substituir DADOS. Atualizar somente web/APPS/INTEGRACOES.",
+  "runtime_phases": {"after_finalization": ["integrations_controller_v12000.js"]},
+  "loader_manifest_automatico": true,
+  "runtime_order": {"after_finalization": 80}
+}

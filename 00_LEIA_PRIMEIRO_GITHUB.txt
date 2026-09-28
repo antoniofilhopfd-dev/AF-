@@ -1,0 +1,21 @@
+AF+ 13.1.0 — PACOTE ENXUTO PARA GITHUB + NETLIFY
+===================================================
+
+Este pacote contém somente os arquivos necessários para publicação.
+
+Na raiz do repositório GitHub devem ficar diretamente:
+- netlify.toml
+- web/
+- netlify/
+- apps_script/
+- LEIA-ME_NETLIFY_APPS_SCRIPT.txt
+
+NÃO envie o ZIP para dentro do repositório. Extraia este ZIP e envie o conteúdo.
+
+Configuração do Netlify:
+- Publish directory: web
+- Functions directory: netlify/functions
+- Environment variable: AFPLUS_APPS_SCRIPT_URL = sua URL /exec do Apps Script
+
+Os XLSX, históricos e backups foram removidos deste pacote de deploy porque não são necessários no GitHub/Netlify.
+A carga inicial do banco permanece em netlify/functions/seed-data.json.

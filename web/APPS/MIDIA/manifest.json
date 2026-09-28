@@ -1,0 +1,17 @@
+{
+  "id":"midia",
+  "nome":"Mídia",
+  "versao_base":"11.10.0",
+  "status":"estavel-4-de-4",
+  "arquivo_dados":"AF_PLUS_MIDIA.xlsx",
+  "dados_persistentes":true,
+  "scripts_runtime":["APPS/MIDIA/media_controller_v11100.js"],
+  "implementacao_compartilhada_core":false,
+  "regra_atualizacao":"Nunca substituir DADOS. Atualizações futuras de Mídia podem substituir somente web/APPS/MIDIA.",
+  "runtime_phases":{"after_af_plus":["media_controller_v11100.js"]},
+  "runtime_order":{"after_af_plus":40},
+  "loader_manifest_automatico":true,
+  "controlador_unico":true,
+  "etapas_concluidas":["1/4 auditoria estrutural","2/4 controlador + sessões","3/4 UX + progresso","4/4 auditoria final"],
+  "proxima_etapa":"Módulo Mídia concluído — escolher próximo módulo"
+}

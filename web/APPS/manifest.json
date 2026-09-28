@@ -1,0 +1,15 @@
+{
+  "schema_version": 1,
+  "loader_version": "12.0.4",
+  "modules": [
+    "LEITURA",
+    "TREINOS",
+    "NUTRICAO",
+    "AGENDA",
+    "CORPO",
+    "INTEGRACOES",
+    "MIDIA",
+    "VIAGENS"
+  ],
+  "regra_atualizacao": "Todos os módulos existentes são descobertos por manifest.json. Para atualizar um módulo estável, substitua apenas sua pasta em web/APPS e preserve DADOS."
+}

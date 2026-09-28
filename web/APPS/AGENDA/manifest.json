@@ -1,0 +1,14 @@
+{
+  "id": "agenda",
+  "nome": "Agenda",
+  "versao_base": "12.0.0",
+  "status": "estavel",
+  "arquivo_dados": "AF_PLUS_AGENDA.xlsx",
+  "dados_persistentes": true,
+  "scripts_runtime": ["APPS/AGENDA/agenda_controller_v12000.js"],
+  "implementacao_compartilhada_core": false,
+  "regra_atualizacao": "Nunca substituir DADOS. Atualizar somente web/APPS/AGENDA.",
+  "runtime_phases": {"after_finalization": ["agenda_controller_v12000.js"]},
+  "loader_manifest_automatico": true,
+  "runtime_order": {"after_finalization": 30}
+}

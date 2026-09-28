@@ -1,0 +1,78 @@
+AF+ 13.0 — NETLIFY + GOOGLE SHEETS + APPS SCRIPT
+=================================================
+
+ETAPA 01/06 — BASE
+- A SAFE5 foi preservada como base visual/funcional.
+- Os 9 XLSX atuais estão em MIGRACAO_XLSX apenas como recuperação.
+- No app publicado, Google Sheets passa a ser a fonte principal.
+
+ETAPA 02/06 — APPS SCRIPT
+1. Acesse https://script.google.com e crie um novo projeto.
+2. Apague o conteúdo padrão de Code.gs.
+3. Cole todo o arquivo apps_script/Code.gs deste pacote.
+4. Em Implantar > Nova implantação > Aplicativo da Web:
+   - Executar como: você
+   - Quem tem acesso: Qualquer pessoa (ou a opção compatível com sua conta)
+5. Autorize o acesso ao Drive/Sheets.
+6. Copie a URL terminada em /exec.
+
+IMPORTANTE:
+- O Apps Script cria automaticamente a planilha "AF+ — Banco de Dados".
+- A primeira carga usa os dados preservados no pacote.
+- É criada também a pasta "AF+ Backups".
+- Um gatilho diário de backup é instalado automaticamente.
+
+ETAPA 03/06 — NETLIFY
+Forma recomendada: GitHub + Netlify, porque este pacote usa Netlify Functions.
+
+1. Coloque TODOS os arquivos desta pasta em um repositório GitHub.
+2. No Netlify: Add new site > Import an existing project > GitHub.
+3. Selecione o repositório.
+4. O netlify.toml já define:
+   - publish = web
+   - functions = netlify/functions
+5. Em Site configuration > Environment variables, crie:
+   AFPLUS_APPS_SCRIPT_URL = URL /exec copiada do Apps Script
+6. Faça o deploy.
+
+Não publique apenas a pasta web por drag-and-drop: o AF+ Cloud precisa da Netlify Function.
+
+ETAPA 04/06 — PRIMEIRA ABERTURA
+- Abra o endereço do Netlify.
+- /api/books verifica se o banco já existe.
+- Se ainda não existir, a carga inicial é enviada ao Apps Script.
+- O Google Sheets passa a ser a fonte principal.
+
+ETAPA 05/06 — TREINOS / IMPORTAÇÕES
+- Garmin, Zepp e Strava usam um fluxo único de revisão.
+- Suporte: FIT, TCX, GPX, CSV e JSON.
+- FIT/TCX: distância, tempo, pace, FC, calorias e etapas/laps são normalizados.
+- Garmin FIT: total_distance é convertido corretamente para km.
+- Etapas executadas são ligadas aos blocos Planejado × Executado.
+- O botão Executar permite:
+  1. Importar Garmin / Zepp / Strava
+  2. Registrar manualmente
+  3. Usar atividade já importada
+- Há detecção de duplicidade e validação de valores suspeitos.
+
+ETAPA 06/06 — SEGURANÇA
+- Google Sheets tem histórico de versões.
+- Backup diário no Drive.
+- Backup manual permanece pela API.
+- Se a internet cair durante salvar, o navegador guarda até 100 gravações pendentes e tenta sincronizar ao voltar.
+- Exclusões/edições continuam passando pelo fluxo do app; não substitua o banco por XLSX.
+
+TESTE RÁPIDO
+1. Abra https://SEU-SITE.netlify.app/api/health
+2. Deve retornar JSON com ok=true e mode=google-sheets.
+3. Abra o AF+.
+4. Faça uma pequena alteração e confirme que aparece no Google Sheets.
+5. Em Treinos, use Executar > Importar Garmin/Zepp/Strava.
+
+ARQUIVOS PRINCIPAIS
+- netlify.toml
+- netlify/functions/afplus-api.js
+- netlify/functions/seed-data.json
+- apps_script/Code.gs
+- web/
+- MIGRACAO_XLSX/

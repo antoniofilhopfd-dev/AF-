@@ -1,0 +1,39 @@
+AF+ 13.1.0 — PENDÊNCIAS CONSOLIDADAS
+Data: 28/09/2026
+
+ETAPA 01/06 — Base e arquitetura
+- Mantido Netlify + Google Sheets + Apps Script.
+- XLSX preservado apenas em DADOS/MIGRACAO como recuperação.
+
+ETAPA 02/06 — Nutrição e Corpo
+- Nutrição: ordem Hoje > Semana > Opções > Plano > Histórico > Alimentos > Evolução.
+- Busca de alimentos sem rerender do input durante digitação.
+- Busca sem acentos, Favoritos e Recentes.
+- Corpo: filtros 7, 30 e 90 dias.
+- Comparação com período anterior e média móvel de 7 registros.
+
+ETAPA 03/06 — Treinos
+- Garmin, Zepp e Strava continuam no fluxo unificado.
+- FIT/TCX/GPX importáveis.
+- Etapas/laps importados quando presentes.
+- Painel de atividades pendentes por origem.
+- Botão Executar mantém: importar atividade, registrar manualmente ou usar já importada.
+- Planejado x Executado preservado por etapa quando disponível.
+- Validação de sanidade para distância, duração, pace e FC.
+
+ETAPA 04/06 — Segurança
+- Status cloud e fila offline preservados.
+- Histórico local das últimas 100 gravações.
+- Desfazer última gravação da sessão.
+- Backup automático diário no Apps Script.
+- Backup de segurança adicional no máximo a cada 30 minutos antes de gravações.
+
+ETAPA 05/06 — Netlify/Apps Script
+- Netlify Function preservada.
+- Apps Script atualizado para 13.1.0.
+- Health check atualizado.
+
+ETAPA 06/06 — Validação
+- JavaScript validado com node --check.
+- manifests JSON válidos.
+- estrutura de 9 arquivos de migração preservada.

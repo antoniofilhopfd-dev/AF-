@@ -1,0 +1,15 @@
+{
+  "id":"nutricao","nome":"Nutrição","versao_base":"11.5.0","status":"estavel_homologado_controlador_unico",
+  "arquivo_dados":"AF_PLUS_NUTRICAO.xlsx","dados_persistentes":true,
+  "scripts_runtime":["APPS/NUTRICAO/nutrition_controller_v1150.js"],
+  "componentes_integrados_no_controlador":["water_easy_v803.js","nutrition_plan_v1141.js","nutrition_data_migration_v1141.js","nutrition_consumed_v1013.js","nutrition_consumption_editor_v1014.js","nutrition_click_edit_v1015.js"],
+  "implementacao_compartilhada_core":false,
+  "regra_atualizacao":"Nunca substituir DADOS. Atualizações futuras de Nutrição podem substituir somente web/APPS/NUTRICAO.",
+  "runtime_phases":{"after_finalization":["nutrition_controller_v1150.js"],"after_final_stable":["nutrition_controller_v1150.js"],"after_af_plus":["nutrition_controller_v1150.js"]},
+  "loader_manifest_automatico":true,"controlador_unico":true,
+  "runtime_order":{"after_finalization":10,"after_final_stable":10,"after_af_plus":10},
+  "homologacao_final":true,
+  "metas_oficiais":{"kcal":2250,"proteina_g":180,"carboidratos_g":225,"lipideos_g":70,"agua":"2,5-3,0 L/dia"},
+  "plano_oficial":"Planejamento Alimentar Personalizado",
+  "etapas_concluidas":["1/4 controlador único","2/4 plano + metas","3/4 consumos + seletor","4/4 auditoria final"]
+}

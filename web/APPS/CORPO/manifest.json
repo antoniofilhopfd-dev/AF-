@@ -1,0 +1,16 @@
+{
+  "id":"corpo",
+  "nome":"Corpo",
+  "versao_base":"11.7.0",
+  "status":"estavel_4_de_4",
+  "arquivo_dados":"AF_PLUS_CORPO.xlsx",
+  "dados_persistentes":true,
+  "scripts_runtime":["APPS/CORPO/body_controller_v1170.js"],
+  "implementacao_compartilhada_core":true,
+  "regra_atualizacao":"Nunca substituir DADOS em atualização de módulo. O controlador do Corpo assume validação, gravação derivada, comparação e auditoria; o CORE mantém apenas compatibilidade de interface.",
+  "runtime_phases":{"after_af_plus":["body_controller_v1170.js"]},
+  "runtime_order":{"after_af_plus":30},
+  "loader_manifest_automatico":true,
+  "etapa_atual":"4/4",
+  "proxima_etapa":"Módulo Corpo concluído — escolher próximo módulo para auditoria"
+}

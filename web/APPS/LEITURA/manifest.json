@@ -1,0 +1,24 @@
+{
+  "id": "leitura",
+  "nome": "Leitura",
+  "versao_base": "11.9.0",
+  "status": "estavel-4-de-4",
+  "arquivo_dados": "AF_PLUS_LEITURA.xlsx",
+  "dados_persistentes": true,
+  "scripts_runtime": [
+    "APPS/LEITURA/reading_module.js",
+    "APPS/LEITURA/reading_controller_v1190.js"
+  ],
+  "implementacao_compartilhada_core": false,
+  "regra_atualizacao": "Nunca substituir DADOS. Atualizar somente este modulo e, quando explicitamente necessário, CORE.",
+  "runtime_phases": {
+    "after_final_patch": [
+      "reading_module.js",
+      "reading_controller_v1190.js"
+    ]
+  },
+  "loader_manifest_automatico": true,
+  "runtime_order": {
+    "after_final_patch": 10
+  }
+}

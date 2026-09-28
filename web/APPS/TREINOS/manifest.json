@@ -1,0 +1,67 @@
+{
+  "id": "treinos",
+  "nome": "Treinos",
+  "versao_base": "12.0.3",
+  "status": "estavel_homologado_com_ranking",
+  "arquivo_dados": "AF_PLUS_TREINOS.xlsx",
+  "dados_persistentes": true,
+  "scripts_runtime": [
+    "APPS/TREINOS/training_controller_v12003.js"
+  ],
+  "componentes_integrados_no_controlador": [
+    "treinus_fix_v55.js",
+    "training_form_v56.js",
+    "pace_auto_v804.js",
+    "duration_hms_v805.js",
+    "training_controller_v1122.js",
+    "workflow_v905.js",
+    "training_focus_v1010.js",
+    "run_planner_v1110.js",
+    "run_compare_cards_v1115.js",
+    "training_audit_v1121.js"
+  ],
+  "scripts_obsoletos": [
+    "treinus_performance_v1019.js",
+    "treinus_apply_fix_v10110.js"
+  ],
+  "implementacao_compartilhada_core": false,
+  "regra_atualizacao": "Nunca substituir DADOS. Atualizações futuras de Treinos podem substituir somente web/APPS/TREINOS.",
+  "runtime_phases": {
+    "after_final_patch": [
+      "training_controller_v12003.js"
+    ],
+    "after_finalization": [
+      "training_controller_v12003.js"
+    ],
+    "after_af_plus": [
+      "training_controller_v12003.js"
+    ]
+  },
+  "loader_manifest_automatico": true,
+  "controlador_unico": true,
+  "runtime_order": {
+    "after_final_patch": 20,
+    "after_finalization": 20,
+    "after_af_plus": 20
+  },
+  "homologacao_final": true,
+  "legado_arquivado_em": "HISTORICO/TREINOS_LEGADO_ATE_v11_2_4.zip",
+  "ranking_corridas": {
+    "ativo": true,
+    "periodos": [
+      "mensal",
+      "semestral",
+      "anual"
+    ],
+    "somente_corridas_executadas": true,
+    "metricas": [
+      "total_km",
+      "quantidade",
+      "tempo_ativo",
+      "pace_medio",
+      "maior_distancia",
+      "corrida_mais_rapida"
+    ],
+    "regra_pace": "tempo ativo / distancia ativa"
+  }
+}

@@ -1,0 +1,22 @@
+{
+  "id": "viagens",
+  "nome": "Viagens",
+  "versao_base": "11.11.0",
+  "status": "estavel",
+  "arquivo_dados": "AF_PLUS_VIAGENS.xlsx",
+  "dados_persistentes": true,
+  "scripts_runtime": [
+    "APPS/VIAGENS/trips_controller_v11110.js"
+  ],
+  "implementacao_compartilhada_core": false,
+  "regra_atualizacao": "Nunca substituir DADOS. Atualizar somente web/APPS/VIAGENS.",
+  "runtime_phases": {
+    "after_af_plus": [
+      "trips_controller_v11110.js"
+    ]
+  },
+  "loader_manifest_automatico": true,
+  "runtime_order": {
+    "after_af_plus": 50
+  }
+}

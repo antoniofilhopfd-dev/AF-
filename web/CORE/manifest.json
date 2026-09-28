@@ -1,0 +1,27 @@
+{
+  "versao": "12.0.4",
+  "build": "20260927",
+  "base": "12.0.3 Ranking de Corridas + atualização de dados Leitura/Treinos/Nutrição",
+  "politica": "módulos existentes atualizáveis pela própria pasta",
+  "dados_path": "../DADOS",
+  "regra_dados": "A pasta DADOS é persistente e nunca deve ser substituída por um pacote de atualização de módulo.",
+  "entrada_runtime": "CORE/module_loader_v12003.js",
+  "registro_modulos": "APPS/manifest.json",
+  "fases_modulo": [
+    "after_final_patch",
+    "after_finalization",
+    "after_final_stable",
+    "after_af_plus"
+  ],
+  "core_pipeline": [
+    "CORE/app.js",
+    "CORE/enhancements.js",
+    "CORE/final_patch.js",
+    "CORE/finalization_v8.js",
+    "CORE/modules_v820.js",
+    "CORE/final_stable_v12002.js",
+    "CORE/af_plus_v1000.js"
+  ],
+  "nota": "O código-base permanece o da 12.0.3; esta revisão atualiza os dados reais de Leitura, Treinos e Nutrição.",
+  "versao_base": "12.0.4"
+}
