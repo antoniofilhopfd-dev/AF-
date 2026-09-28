@@ -630,8 +630,16 @@ setTimeout(migrate1141,900);
     Object.assign(c,{date:ceDate,day:DAYS[new Date(ceDate+'T12:00:00').getDay()],meal:ceMeal,time:c.time||'',type:typeValue,referenceId:ceType==='opcao'?(ceReference||c.referenceId||''):'',name,quantity:'',unit:'',kcal:total.kcal,proteinG:total.protein,carbsG:total.carbs,fatG:total.fat,fiberG:total.fiber,sugarG:total.sugar,sourcePlanId:'',updatedAt:now});
     let itemObjs=consumptionItemRows().filter(x=>String(x.consumptionId)!==String(cid));
     ceItems.forEach((x,i)=>itemObjs.push({id:`${cid}-${i+1}`,consumptionId:cid,foodId:x.foodId||'',foodName:x.name,quantity:x.quantity,unit:x.unit,kcal:x.kcal,proteinG:x.protein,carbsG:x.carbs,fatG:x.fat,fiberG:x.fiber,sugarG:x.sugar,origin:ceType==='opcao'?'opcao_ajustada':'adicionado',createdAt:now}));
-    await saveSheet(FILES.nutrition,'Consumos',toRows(cons,consHeaders));
-    await saveSheet(FILES.nutrition,'Consumo_Itens',toRows(itemObjs,itemHeaders));
+    const consRows=toRows(cons,consHeaders), itemRows=toRows(itemObjs,itemHeaders);
+    if(typeof window.saveSheetsBatch==='function'){
+      await window.saveSheetsBatch([
+        {file:FILES.nutrition,sheet:'Consumos',rows:consRows},
+        {file:FILES.nutrition,sheet:'Consumo_Itens',rows:itemRows}
+      ]);
+    }else{
+      await saveSheet(FILES.nutrition,'Consumos',consRows);
+      await saveSheet(FILES.nutrition,'Consumo_Itens',itemRows);
+    }
     state.modal=null;render();toast(ceEditingId?'Consumo atualizado':'Consumo registrado');
   }
 

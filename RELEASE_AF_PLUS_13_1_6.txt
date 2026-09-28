@@ -1,0 +1,6 @@
+AF+ 13.1.6 — Nutrição: gravação rápida e performance
+- Save rápido via Google Sheets Values API mantido.
+- Novo endpoint save-batch para Consumos + Consumo_Itens em uma única requisição.
+- Água continua em gravação unitária rápida.
+- Cache local apenas para acelerar abertura; Google Sheets continua sendo a fonte oficial.
+- Corpo e demais módulos preservados.

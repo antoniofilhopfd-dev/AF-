@@ -1,0 +1,7 @@
+AF+ 13.1.8 — Correção das opções de Nutrição
+
+- Opcoes_Refeicoes do seed restaurada a partir da base completa Opcoes_Originais.
+- 70 linhas (1 cabeçalho + 70 dados) preservadas no seed.
+- app.js agora usa Opcoes_Originais como fallback seguro se Opcoes_Refeicoes estiver com schema incompleto.
+- Cache bust atualizado para 13.1.8-cloud.
+- Nenhuma aba adicional é excluída nesta versão.

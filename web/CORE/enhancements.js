@@ -173,11 +173,32 @@ saveSheet=async function(file,sheet,data){
   if(state.saveBusy)throw new Error('Já existe uma gravação em andamento. Aguarde alguns segundos.');
   state.saveBusy=true;
   try{
-    await ensureAutoBackup();
     const r=await fetch('/api/save-sheet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({file,sheet,rows:data})});
     if(!r.ok)throw new Error(await r.text());
     state.books[file]??={};state.books[file][sheet]=data;
-    toast('Salvo com segurança no XLSX local');
+    toast('Salvo no Google Sheets');
+    // Backup fora do caminho crítico: não bloqueia a gravação nem a interface.
+    setTimeout(()=>ensureAutoBackup(),250);
+  }catch(e){
+    const msg=friendlySaveError(e);toast(msg);throw new Error(msg);
+  }finally{state.saveBusy=false}
+};
+
+window.saveSheetsBatch=async function(items){
+  const list=(Array.isArray(items)?items:[]).filter(Boolean);
+  if(!list.length)return;
+  list.forEach(it=>validateSheetPayload(it.file,it.sheet,it.rows));
+  if(state.saveBusy)throw new Error('Já existe uma gravação em andamento. Aguarde alguns segundos.');
+  state.saveBusy=true;
+  try{
+    const r=await fetch('/api/save-batch',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({items:list})});
+    const txt=await r.text();
+    if(!r.ok)throw new Error(txt);
+    list.forEach(it=>{state.books[it.file]??={};state.books[it.file][it.sheet]=it.rows;});
+    toast('Salvo no Google Sheets');
+    try{localStorage.setItem('afplus:books-cache',JSON.stringify({at:Date.now(),books:state.books}));}catch(_){ }
+    setTimeout(()=>ensureAutoBackup(),250);
+    return JSON.parse(txt||'{}');
   }catch(e){
     const msg=friendlySaveError(e);toast(msg);throw new Error(msg);
   }finally{state.saveBusy=false}

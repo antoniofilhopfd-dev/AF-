@@ -1,0 +1,8 @@
+AF+ 13.1.3 — CORPO: REGISTRO DE PESO RESTAURADO
+
+1. Recolocado + Registrar peso na aba Corpo > Peso.
+2. Formulário com data, peso (kg) e observação opcional.
+3. Gravação usa bodySaveObject/saveSheet e sincroniza com Google Sheets.
+4. Após salvar, cards, gráfico e histórico são renderizados novamente.
+5. Mantidos filtros 7/30/90/Tudo, média móvel, comparação, Medidas, Bioimpedância, Adipometria e Avaliações.
+6. Nenhum peso existente é apagado.

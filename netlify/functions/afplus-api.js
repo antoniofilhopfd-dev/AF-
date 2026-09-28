@@ -50,8 +50,25 @@ exports.handler=async(event)=>{
       return json(j.ok?200:500,j);
     }
 
+    if(endpoint==='save-batch'){
+      const b=JSON.parse(event.body||'{}');
+      const items=Array.isArray(b.items)?b.items:[];
+      const j=await gasPost({action:'saveBatch',items});
+      return json(j.ok?200:500,j);
+    }
+
     if(endpoint==='backup'){
       const j=await gasPost({action:'backup'});
+      return json(j.ok?200:500,j);
+    }
+
+    if(endpoint==='migrate-modules'){
+      const j=await gasPost({action:'migrateModules'});
+      return json(j.ok?200:500,j);
+    }
+
+    if(endpoint==='module-status'){
+      const j=await gasGet('moduleStatus');
       return json(j.ok?200:500,j);
     }
 

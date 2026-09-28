@@ -1,0 +1,9 @@
+AF+ 13.2.1 — Nutrição consumo-only
+
+- Bancos continuam separados por módulo.
+- Nutrição não recria mais as abas Planejamento e Planejamento_Itens.
+- Migração do banco antigo ignora essas duas abas.
+- seed-data.json também não contém mais essas duas abas.
+- Consumos e Consumo_Itens permanecem como base operacional da Nutrição.
+- Plano_Nutricionista e Planos_Versoes permanecem como referência do plano oficial.
+- Banco antigo não é apagado automaticamente.

@@ -100,6 +100,6 @@
   setTimeout(()=>{const badge=document.getElementById('afCloudBadge');if(badge&&!document.getElementById('afUndoBtn')){const b=document.createElement('button');b.id='afUndoBtn';b.textContent='Desfazer';b.className='btn';b.style.cssText='margin-left:8px;padding:4px 8px;font-size:11px';b.onclick=window.afUndoLast;badge.appendChild(b)}},1200);
 
   const st=document.createElement('style');st.textContent='.af-food-quick{display:flex;gap:7px;align-items:center;flex-wrap:wrap;margin:10px 0}.af-food-chip{padding:6px 9px}.af-import-pending{margin-bottom:14px}.body-weight-actions{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.smart-form .span2{grid-column:1/-1}.smart-form textarea{width:100%;resize:vertical}';document.head.appendChild(st);
-  document.title='AF+ 13.1.3 — Netlify + Google Sheets';
-  console.info('[AF+ 13.1.3] Corpo: registro de peso restaurado + Sheets');
+  document.title='AF+ 13.1.5 — Netlify + Google Sheets';
+  console.info('[AF+ 13.1.5] Corpo: registro de peso restaurado + Sheets');
 })();

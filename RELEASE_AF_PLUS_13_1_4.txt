@@ -1,0 +1,13 @@
+AF+ 13.1.4 — CARGA POR MÓDULO / FIX 504
+
+Correções:
+- /api/books agora aceita ?file=AF_PLUS_....xlsx.
+- Apps Script lê somente as abas do módulo solicitado.
+- Frontend carrega os módulos em lotes de até 3 chamadas.
+- Evita uma única Function longa com todas as abas, causa do Gateway Timeout 504.
+- Preserva o registro de peso restaurado no Corpo da 13.1.3.
+
+IMPORTANTE:
+1. Atualize primeiro o Code.gs no Apps Script e publique NOVA VERSÃO da implantação existente.
+2. Depois atualize no GitHub netlify/functions/afplus-api.js e web/CORE/app.js.
+3. Aguarde o Netlify publicar e teste /api/books?file=AF_PLUS_CORPO.xlsx.

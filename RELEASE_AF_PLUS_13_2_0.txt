@@ -1,0 +1,10 @@
+AF+ 13.2.0 — Banco modular e carregamento sob demanda
+
+- Um Google Sheets separado por módulo (9 bancos).
+- Migração segura do banco único com backup prévio e preservação do original.
+- Runtime lê/grava somente o banco do módulo solicitado.
+- Tela abre imediatamente com cache/interface e sincroniza em segundo plano.
+- Ao navegar, carrega apenas o módulo aberto.
+- Backup passa a copiar todos os bancos modulares.
+- Limpeza automática de abas foi desativada para evitar perda de dados.
+- Rotas migrateModules e moduleStatus adicionadas.

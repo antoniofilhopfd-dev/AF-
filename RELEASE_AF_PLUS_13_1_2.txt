@@ -1,0 +1,7 @@
+AF+ 13.1.2 — PATCH NETLIFY 504
+
+- /api/books faz uma única chamada ao Apps Script.
+- Remove health + books sequenciais que causavam timeout 504.
+- health usa GET direto.
+- Mensagem de erro atualizada para Google Sheets/Netlify.
+- Nenhum dado ou planilha é alterado por este patch.

@@ -1,0 +1,9 @@
+AF+ 13.1.5 — GRAVAÇÃO RÁPIDA NO GOOGLE SHEETS
+
+- Corrige 504/Inactivity Timeout em /api/save-sheet.
+- Remove backup síncrono do caminho crítico de gravação.
+- Mantém backup diário, manual e backup automático disparado após salvar.
+- Usa Google Sheets Values API para limpar/gravar a aba com menos latência.
+- Evita reler/atualizar META a cada gravação existente.
+- Mantém fila local de pendências e sincronização posterior.
+- Atualiza cache-busting do CORE para 13.1.5-cloud.

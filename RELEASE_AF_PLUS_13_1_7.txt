@@ -1,0 +1,16 @@
+AF+ 13.1.7 — LIMPEZA CONSERVADORA DE ABAS
+
+Removidas do seed e marcadas para exclusão no banco atual:
+- CONFIG: Historico_Versoes, Filtros_Salvos, Dashboard_Layout
+- CORPO: Bio_Avaliacoes, Bio_Impedancia, Bio_Segmentar
+- LEITURA: Destaques, Leitura (legadas)
+- NUTRICAO: Alimentos_Referencia, Fontes_Alimentos, Lista_Desativada, Migracao_Dados, Planejamento_Consumido, Politica_Calculo, Variantes_Opcoes
+
+Preservado:
+- todas as abas operacionais usadas pelo runtime
+- abas CONFIG
+- históricos/diagnósticos usados pela Central
+- Auditorias e logs úteis
+- dados atuais de Peso, Medidas, Bioimpedancia, Adipometria, Agua, Consumos, Planejamento, Alimentos, Treinos, Leitura, Agenda, Midia, Viagens e Integracoes
+
+A função limparAbasDesnecessariasAFPlus() cria backup antes da exclusão.
