@@ -17,7 +17,31 @@ function rows(file,sheet){return state.books[file]?.[sheet]||[]}
 function objRows(file,sheet){const r=rows(file,sheet);if(r.length<2)return[];const h=r[0].map(String);return r.slice(1).filter(x=>x.some(v=>v!==null&&v!==''&&v!==undefined)).map(row=>Object.fromEntries(h.map((k,i)=>[k,row[i]])))}
 function toRows(objs,headers){return [headers,...objs.map(o=>headers.map(h=>o[h]??''))]}
 function toast(msg){const e=document.createElement('div');e.className='toast';e.textContent=msg;document.body.appendChild(e);setTimeout(()=>e.remove(),2200)}
-async function load(){const r=await fetch('/api/books');state.books=await r.json();render()}
+async function load(){
+  const files=[...new Set(Object.values(FILES))];
+  const books={};
+  const failed=[];
+  // AF+ 13.1.4: carrega em lotes pequenos para não estourar o timeout da Netlify Function.
+  for(let i=0;i<files.length;i+=3){
+    const chunk=files.slice(i,i+3);
+    const results=await Promise.all(chunk.map(async file=>{
+      try{
+        const r=await fetch('/api/books?file='+encodeURIComponent(file),{cache:'no-store'});
+        const txt=await r.text();
+        if(!r.ok)throw new Error('HTTP '+r.status+' '+txt.slice(0,180));
+        const j=JSON.parse(txt);
+        return {file,j};
+      }catch(err){return {file,error:err}}
+    }));
+    results.forEach(x=>{
+      if(x.error)failed.push(x.file+': '+x.error.message);
+      else Object.assign(books,x.j||{});
+    });
+  }
+  if(failed.length)throw new Error('Falha ao carregar módulo(s): '+failed.join(' | '));
+  state.books=books;
+  render();
+}
 async function saveSheet(file,sheet,rows){const r=await fetch('/api/save-sheet',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({file,sheet,rows})});if(!r.ok)throw new Error(await r.text());state.books[file][sheet]=rows;toast('Salvo na planilha local');}
 function shell(content,title='AF+'){return `<div class="layout"><aside class="sidebar"><div class="brand">AF<span>+</span></div><div class="navlabel">Painel</div>${MODS.map(m=>`<button class="navbtn ${state.page===m[0]?'active':''}" data-page="${m[0]}"><span class="ico">${m[1]}</span><span>${m[2]}</span></button>`).join('')}<div class="navlabel">Dados</div><button class="navbtn" id="openData"><span class="ico">▣</span><span>Abrir DADOS</span></button><div class="sidefoot">AF+ Local XLSX<br>localhost • planilhas locais</div></aside><section class="main"><header class="top"><h1>${esc(title)}</h1><div class="actions"><button class="btn" id="backup">Backup XLSX</button><button class="btn" id="reload">Atualizar</button></div></header><div class="content">${content}</div></section></div>${state.modal?`<div class="modalback" id="modalback"><div class="modal">${state.modal}</div></div>`:''}`}
 function hero(title,text){return `<div class="hero"><h2>${title}</h2><p>${text}</p></div>`}
