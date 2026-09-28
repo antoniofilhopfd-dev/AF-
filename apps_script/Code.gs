@@ -7,7 +7,7 @@ const META_SHEET='_AFPLUS_META';
 const HOME_SHEET='INICIO';
 const AFPLUS_LAST_SAFETY_BACKUP='AFPLUS_LAST_SAFETY_BACKUP';
 const AFPLUS_MODULE_DBS_PROP='AFPLUS_MODULE_DBS_V2';
-const AFPLUS_ARCH_VERSION='13.2.1';
+const AFPLUS_ARCH_VERSION='13.2.2';
 const AFPLUS_MODULE_NAMES={
   'AF_PLUS_NUTRICAO.xlsx':'AF+ — Nutrição',
   'AF_PLUS_CORPO.xlsx':'AF+ — Corpo',
@@ -123,7 +123,7 @@ function migrarBancoUnicoParaModulosAFPlus(){
   metas.forEach(r=>{
     const file=String(r[0]||''), sheet=String(r[1]||''), tabName=String(r[2]||'');
     if(!file||!sheet||!tabName) return;
-    // AF+ 13.2.1: Nutrição trabalha somente com consumos reais.
+    // AF+ 13.2.2: Nutrição trabalha somente com consumos reais.
     // Planejamento diário foi desativado e não deve ser recriado na arquitetura modular.
     if(file==='AF_PLUS_NUTRICAO.xlsx' && (sheet==='Planejamento' || sheet==='Planejamento_Itens')) return;
     try{

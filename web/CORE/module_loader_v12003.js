@@ -1,6 +1,6 @@
 // AF+ 12.0.4 — carregador modular; código-base 12.0.3 + dados atualizados
 // Mantém a ordem de execução da 11.2.2, mas remove do index.html referências diretas aos módulos.
-const AF_VERSION = '13.2.1-cloud';
+const AF_VERSION = '13.2.2-cloud';
 const PHASES = ['after_final_patch','after_finalization','after_final_stable','after_af_plus'];
 
 const CORE_PIPELINE = [

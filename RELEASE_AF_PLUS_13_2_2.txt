@@ -1,0 +1,7 @@
+AF+ 13.2.2 — Correção de datas no Google Sheets
+
+- Normaliza datas vindas do Google Sheets para YYYY-MM-DD no frontend.
+- Corrige inputs type=date que recebiam strings como "Thu Sep 24 00:00:00 GMT-03:00 2026".
+- Corrige exibição de datas no Corpo, gráficos, histórico e avaliações.
+- Mantém os valores gravados nas planilhas; a correção é de leitura/apresentação.
+- Arquitetura modular 13.2.x preservada.
