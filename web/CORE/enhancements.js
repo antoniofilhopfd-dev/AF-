@@ -220,5 +220,5 @@ bind=function(){
   document.getElementById('settingsReload')?.addEventListener('click',load);
 };
 
-load().catch(e=>{app.innerHTML=`<div class="boot"><div class="brandbig">AF<span>+</span></div><h2>Não foi possível carregar as planilhas.</h2><p>Confirme se a pasta DADOS está junto do AF_PLUS_LOCAL.exe e se nenhum arquivo está corrompido.</p><pre>${esc(e.message)}</pre></div>`});
+load().catch(e=>{app.innerHTML=`<div class="boot"><div class="brandbig">AF<span>+</span></div><h2>Não foi possível carregar os dados do Google Sheets.</h2><p>O AF+ está em modo Netlify + Google Sheets. Verifique a conexão com a API e tente atualizar a página.</p><pre>${esc(e.message)}</pre></div>`});
 
