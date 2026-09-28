@@ -1,4 +1,4 @@
-  const seed = require('./seed-data.json');
+const seed = require('./seed-data.json');
 
 const GAS_URL = process.env.AFPLUS_APPS_SCRIPT_URL || '';
 
@@ -36,10 +36,10 @@ exports.handler=async(event)=>{
     }
 
     if(endpoint==='books'){
-      // IMPORTANTE: apenas UMA chamada ao Apps Script.
-      // A versão anterior fazia health + books em sequência e podia ultrapassar
-      // o limite de tempo da Function, gerando 504 mesmo com o Apps Script OK.
-      const j=await gasGet('books');
+      // AF+ 13.1.4: aceita ?file=AF_PLUS_....xlsx para carregar um módulo por vez.
+      // Isso evita que uma única Function carregue todas as dezenas de abas e estoure em 504.
+      const file=(event.queryStringParameters&&event.queryStringParameters.file)||'';
+      const j=await gasGet('books',file?{file}:{});
       if(!j || j.ok!==true) return json(502,j||{ok:false,error:'Resposta vazia do Apps Script'});
       return json(200,j.books||{});
     }
